@@ -3,16 +3,16 @@ package com.jsatx.core;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class BasicDataFrame {
+public class DFrame {
     private final List<String> columns;
     private final List<Row> rows;
 
-    public BasicDataFrame(List<String> columns, List<Row> rows) {
+    public DFrame(List<String> columns, List<Row> rows) {
         this.columns = columns;
         this.rows = rows;
     }
 
-    public static BasicDataFrame fromCSV(String csvText) {
+    public static DFrame fromCSV(String csvText) {
         String[] lines = csvText.split("\\r?\\n");
         List<String> headers = Arrays.asList(lines[0].split(","));
         List<Row> rows = new ArrayList<>();
@@ -34,16 +34,16 @@ public class BasicDataFrame {
             rows.add(new Row(fixed));
         }
 
-        return new BasicDataFrame(headers, rows);
+        return new DFrame(headers, rows);
     }
 
 
-    public BasicDataFrame filter(String column, String value) {
+    public DFrame filter(String column, String value) {
         int colIndex = columns.indexOf(column);
         List<Row> filtered = rows.stream()
                 .filter(r -> r.get(colIndex).equals(value))
                 .collect(Collectors.toList());
-        return new BasicDataFrame(columns, filtered);
+        return new DFrame(columns, filtered);
     }
 
     public void show() {
@@ -98,6 +98,7 @@ public class BasicDataFrame {
             System.out.printf("  %s (%s)%n", col, type);
         }
     }
+
 
     // describe numeric columns
     public void describe() {

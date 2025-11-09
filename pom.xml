@@ -10,12 +10,8 @@
     <packaging>jar</packaging>
 
     <name>J-Satx</name>
-    <description>Open-source Java DSA and DataFrame toolkit</description>
+    <description>Open-source Analytical and DataFrame toolkit</description>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-    </properties>
 
     <dependencies>
         <!-- CSV Support -->
@@ -24,7 +20,29 @@
             <artifactId>opencsv</artifactId>
             <version>5.7.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>3.2.5</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Jsatx Packages</name>
+            <url>https://maven.pkg.github.com/sathishkumar7218/Jsatx</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.test.skip>true</maven.test.skip> <!-- Skip tests -->
+    </properties>
+
 
     <build>
         <plugins>

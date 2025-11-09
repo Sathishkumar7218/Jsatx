@@ -1,26 +1,27 @@
 package com.jsatx.examples;
 
-import com.jsatx.core.BasicDataFrame;
-import com.jsatx.io.CsvUtils;
+import com.jsatx.core.pd;
+import com.jsatx.core.DFrame;
 
 public class Main {
     public static void main(String[] args) {
-        String path = "sample.csv";
-        BasicDataFrame df = CsvUtils.readCSV(path);
+        DFrame df = pd.read_csv("sample.csv");
 
-        System.out.println("\n📊 Full DataFrame:");
+        System.out.println("\n✅ Full DataFrame:");
         df.show();
 
-        System.out.println("\n🔍 df.head(2):");
+        System.out.println("\n🔹 df.head(2):");
         df.head(2);
 
-        System.out.println("\n🔍 df.tail(2):");
+        System.out.println("\n🔹 df.tail(2):");
         df.tail(2);
 
-        System.out.println("\nℹ️ df.info():");
+        System.out.println("\n🔹 df.info():");
         df.info();
 
-        System.out.println("\n📈 df.describe():");
+        System.out.println("\n🔹 df.describe():");
         df.describe();
+
+        pd.to_csv(df, "output.csv"); // test saving
     }
 }
